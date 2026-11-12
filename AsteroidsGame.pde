@@ -44,5 +44,5 @@ public void keyReleased(){
   if(key=='a'||keyCode == LEFT) direction[1]=false;
   if(key=='s'||keyCode == DOWN) direction[2]=false;
   if(key=='d'||keyCode == RIGHT) direction[3]=false;
-  if(key==' ') direction[4]=true;
+  if(key==' ') direction[4] = false;
 }
