@@ -1,10 +1,12 @@
 boolean[] direction = {false,false,false,false,false};
 Spaceship ship;
 ArrayList<Star> stars;
+ ArrayList<Bullet> bullets;
 public void setup() 
 {
   size(1000,1000);
   ship = new Spaceship();
+  bullets = new ArrayList<Bullet>();
   stars = new ArrayList<Star>();
   for(int i=0;i<200;i++){stars.add(new Star());}
 }
@@ -12,8 +14,16 @@ public void setup()
 public void draw() 
 {
   background(0);
-  for(int i=stars.size()-1;i>0;i--){stars.get(i).show();}
   ship.move();
+  if(direction[4])bullets.add(new Bullet(ship));
+  for(int i=bullets.size()-1;i>=0;i--){
+    if(bullets.get(i).isOutOfBounds()){
+      bullets.remove(i);
+    } else{
+      bullets.get(i).fire();
+    }
+  }
+  for(int i=stars.size()-1;i>0;i--){stars.get(i).show();}
 }
 
 public void keyPressed(){
