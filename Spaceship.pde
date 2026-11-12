@@ -19,4 +19,16 @@ class Spaceship extends Floater
     super.move();
     super.show();
   }
+  public void hyperspace(){
+    myXspeed = 0;
+    myYspeed = 0;
+    double[] Old = {myCenterX, myCenterY};
+    myCenterX = Math.random()*width;
+    myCenterY = Math.random()*height;
+    double[] New = {myCenterX, myCenterY};
+    turn(Math.random()*360);
+    for(int i=1;i<=4;i++){
+      line((float)(Old[0]),(float)(Old[1]),(float)(New[0]),(float)(New[1]));
+    }
+  }
 }
