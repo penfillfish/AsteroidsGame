@@ -1,6 +1,7 @@
 class Spaceship extends Floater
 {
   private float friction;
+  private int maxhp,hp;
   public Spaceship(){
     friction = 0.98;
     corners = 4;
@@ -9,6 +10,8 @@ class Spaceship extends Floater
     xCorners = new int[]{-8,16,-8,-2};
     yCorners = new int[]{-8,0,8,0};
     myColor = 255;
+    maxhp = 10;
+    hp = maxhp;
   }
   public void move(){
     if(direction[0]) super.accelerate(0.3);
@@ -17,7 +20,7 @@ class Spaceship extends Floater
     myXspeed *= friction;
     myYspeed *= friction;
     super.move();
-    super.show();
+    show();
   }
   public void hyperspace(){
     myXspeed = 0;
@@ -30,6 +33,18 @@ class Spaceship extends Floater
     for(int i=1;i<=4;i++){
       line((float)(Old[0]),(float)(Old[1]),(float)(New[0]),(float)(New[1]));
     }
+  }
+  public void show(){
+    super.show();
+    fill(255,0,0);
+    rect((float)myCenterX-25,(float)myCenterY-30,50,10);
+    if(hp>=0){
+      fill(0,255,0);
+      rect((float)myCenterX-25,(float)myCenterY-30,50*max(0,(float)hp/maxhp),10);
+    }
+  }
+  public void damage(){
+    hp -= 1;
   }
   public double getPos(char n){
     if(n=='x')return myCenterX;
@@ -63,5 +78,11 @@ class Spaceship extends Floater
   public void setSpeed(char n,double v){
     if(n=='x')myXspeed = v;
     else if(n=='y')myYspeed = v;
+  }
+  public int getHp(){
+    return hp;
+  }
+  public void setHp(int v){
+    hp = v;
   }
 }
