@@ -28,8 +28,8 @@ class Asteroid extends Floater
   }
   public boolean collideShip(Spaceship ship){
     for(int i=0;i<ship.getCorners('x').length;i++){
-      float distToCenter = distToCenter(ship.getDir(),ship.getPos('x'),ship.getPos('y'),ship.getCorners('x')[i],ship.getCorners('y')[i]);
-      if(distToCenter<minRad){
+      float d = distToCenter(ship.getDir(),ship.getPos('x'),ship.getPos('y'),ship.getCorners('x')[i],ship.getCorners('y')[i]);
+      if(d<minRad){
         return true;
       }
     }
@@ -39,8 +39,8 @@ class Asteroid extends Floater
     for(int j=bullets.size()-1;j>=0;j--){
       Bullet b = bullets.get(j);
       for(int i=0;i<b.getCorners('x').length;i++){
-        float distToCenter = distToCenter(b.getDir(),b.getPos('x'),b.getPos('y'),b.getCorners('x')[i],b.getCorners('y')[i]);
-        if(distToCenter<maxRad){
+        float d = distToCenter(b.getDir(),b.getPos('x'),b.getPos('y'),b.getCorners('x')[i],b.getCorners('y')[i]);
+        if(d<maxRad){
           b.die();
           return true;
         }
