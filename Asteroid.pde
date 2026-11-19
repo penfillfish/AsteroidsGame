@@ -36,7 +36,8 @@ class Asteroid extends Floater
     return false;
   }
   public boolean collide(ArrayList<Bullet> bullets){
-    for(Bullet b:bullets){
+    for(int j=bullets.size()-1;j>=0;j--){
+      Bullet b = bullets.get(j);
       for(int i=0;i<b.getCorners('x').length;i++){
         float distToCenter = distToCenter(b.getDir(),b.getPos('x'),b.getPos('y'),b.getCorners('x')[i],b.getCorners('y')[i]);
         if(distToCenter<maxRad){
