@@ -33,10 +33,10 @@ public void draw()
     for(int i=stars.size()-1;i>=0;i--){stars.get(i).show();}
     for(int i=asteroids.size()-1;i>=0;i--){
       Asteroid a = asteroids.get(i);
-      if(a.collide(ship)){
+      if(a.collideShip(ship)){
         ship.setHp(ship.getHp()-1);
         asteroids.remove(i);
-      }else if(a.collide(bullets)){
+      }else if(a.collideBullet(bullets)){
         asteroids.remove(i);
       }else{
         a.move();
