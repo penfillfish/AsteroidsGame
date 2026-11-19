@@ -26,7 +26,7 @@ class Asteroid extends Floater
     super.move();
     show();
   }
-  public boolean collide(Spaceship ship){
+  public boolean collideShip(Spaceship ship){
     for(int i=0;i<ship.getCorners('x').length;i++){
       float distToCenter = distToCenter(ship.getDir(),ship.getPos('x'),ship.getPos('y'),ship.getCorners('x')[i],ship.getCorners('y')[i]);
       if(distToCenter<minRad){
@@ -35,7 +35,7 @@ class Asteroid extends Floater
     }
     return false;
   }
-  public boolean collide(ArrayList<Bullet> bullets){
+  public boolean collideBullet(ArrayList<Bullet> bullets){
     for(int j=bullets.size()-1;j>=0;j--){
       Bullet b = bullets.get(j);
       for(int i=0;i<b.getCorners('x').length;i++){
